@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ComposePOC</string>
+    <string name="title_activity_order_details_main">OrderDetailsMain</string>
+    <string name="your_rating">Your Rating</string>
+    <string name="rate_qualities">Rate Qualities</string>
+    <string name="download_invoice">Download Invoice</string>
+    <string name="payment_details_title">Payment Details</string>
+    <string name="subtotal_title">Sub total</string>
+    <string name="delivery_ship_charges_title">Delivery &amp; Shipping Charges</string>
+    <string name="discount_title">Discount</string>
+    <string name="coupon_title">Coupon</string>
+    <string name="total_amount_title">Total Amount</string>
+    <string name="payment_mode_title">Payment Mode :</string>
+    <string name="delivery_address_title">Delivery Address :</string>
+    <string name="help_support_title">Help &amp; Support</string></resources>
