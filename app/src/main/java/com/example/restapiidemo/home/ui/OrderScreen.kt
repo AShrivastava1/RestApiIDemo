@@ -22,6 +22,7 @@ import androidx.constraintlayout.compose.Dimension
 import coil.compose.rememberImagePainter
 import com.example.restapiidemo.R
 import com.example.restapiidemo.home.data.PostModel
+import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
 fun OrderScreen(orderDetails: PostModel) {
@@ -106,7 +107,7 @@ fun CardElevationProductDetailsView(orderItem: PostModel,mContext: Context) {
     ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
         val (productImage, productName, price, sizeColor, status,
             callout, soldByInfo, ratingColumn) = createRefs()
-        Image(
+   /*     Image(
             painter = rememberImagePainter(orderItem.image),
             contentDescription = null,
             modifier = Modifier.constrainAs(productImage) {
@@ -114,6 +115,20 @@ fun CardElevationProductDetailsView(orderItem: PostModel,mContext: Context) {
                 start.linkTo(parent.start, 8.dp)
             }.width(100.dp)
                 .height(100.dp)
+        )*/
+
+        GlideImage(
+            imageModel = orderItem.image,
+            // Crop, Fit, Inside, FillHeight, FillWidth, None
+            contentScale = ContentScale.Crop,
+            contentDescription = null,
+            // shows an image with a circular revealed animation.
+            modifier = Modifier.constrainAs(productImage) {
+                top.linkTo(parent.top, 8.dp)
+                start.linkTo(parent.start, 8.dp)
+                }
+                .height(100.dp)
+                .width(100.dp)
         )
         Text(
             text = orderItem.title, color = Color.DarkGray,

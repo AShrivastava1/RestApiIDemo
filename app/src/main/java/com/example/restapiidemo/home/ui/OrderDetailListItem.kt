@@ -1,5 +1,7 @@
 package com.example.composepoc
 
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -10,17 +12,24 @@ import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import coil.compose.rememberImagePainter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
 import com.example.restapiidemo.home.data.PostModel
+import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
     fun OrderDetailListItem(orderItem: PostModel, navigateToProfile: (PostModel) -> Unit) {
@@ -88,7 +97,7 @@ import com.example.restapiidemo.home.data.PostModel
                         }
                 )
 
-                Image(
+                /*Image(
                   //  painter = painterResource(id = R.drawable.ic_launcher_background),
                     painter = rememberImagePainter(orderItem.image),
                     contentDescription = null,
@@ -100,7 +109,22 @@ import com.example.restapiidemo.home.data.PostModel
                         }
                         .height(50.dp)
                         .width(50.dp)
+                )*/
+                GlideImage(
+                    imageModel = orderItem.image,
+                    // Crop, Fit, Inside, FillHeight, FillWidth, None
+                    contentScale = ContentScale.Crop,
+                    contentDescription = null,
+                    // shows an image with a circular revealed animation.
+                    modifier = Modifier
+                        .constrainAs(productImage) {
+                            top.linkTo(separator.bottom, 8.dp)
+                            start.linkTo(parent.start, 8.dp)
+                        }
+                        .height(50.dp)
+                        .width(50.dp)
                 )
+
                 Text(
                     text = orderItem.title, color = Color.DarkGray,
                     maxLines = 1,
@@ -128,5 +152,4 @@ import com.example.restapiidemo.home.data.PostModel
             }
         }
     }
-
 
